@@ -1,4 +1,4 @@
-import 'package:qf_tools/qftools.dart';
+import 'package:qftools/qftools.dart';
 
 void main() {
   // Example usage of QfTools library

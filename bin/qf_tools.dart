@@ -1,7 +1,7 @@
 #!/usr/bin/env dart
 import 'dart:io';
 import 'package:args/args.dart';
-import 'package:qf_tools/qftools.dart';
+import 'package:qftools/qftools.dart';
 
 Future<void> main(List<String> arguments) async {
   final parser = ArgParser()

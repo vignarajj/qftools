@@ -1,6 +1,7 @@
 import 'dart:io';
+
+import 'package:qftools/qftools.dart';
 import 'package:test/test.dart';
-import 'package:qf_tools/qftools.dart';
 
 void main() {
   group('QfTools', () {
@@ -34,17 +35,20 @@ void main() {
       });
 
       test('should convert file path to asset path', () {
-        final assetPath = FileUtils.filePathToAssetPath('assets/images/logo.png');
+        final assetPath =
+            FileUtils.filePathToAssetPath('assets/images/logo.png');
         expect(assetPath, equals('assets/images/logo.png'));
       });
 
       test('should convert file path to constant name', () {
-        final constantName = FileUtils.filePathToConstantName('assets/images/app_logo.png');
+        final constantName =
+            FileUtils.filePathToConstantName('assets/images/app_logo.png');
         expect(constantName, equals('assets_images_app_logo'));
       });
 
       test('should get relative path', () {
-        final relativePath = FileUtils.getRelativePath('${Directory.current.path}/test.txt');
+        final relativePath =
+            FileUtils.getRelativePath('${Directory.current.path}/test.txt');
         expect(relativePath, equals('test.txt'));
       });
     });
