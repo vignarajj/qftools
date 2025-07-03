@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="qftools API docs, for the Dart programming language.">
+  <title>qftools - Dart API docs</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="static-assets/github.css?v1">
+  <link rel="stylesheet" href="static-assets/styles.css?v1">
+  <link rel="icon" href="static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="https://github.com/vignarajj/qftools">qftools package</a></li>
+  </ol>
+  <div class="self-name">qftools</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+  <div id="dartdoc-main-content" class="main-content">
+      
+<section class="desc markdown">
+  <h1 id="qftools---flutter-project-management-cli">QfTools - Flutter Project Management CLI</h1>
+<p>A comprehensive command-line interface tool for streamlining Flutter project management and development workflows.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li><strong>Asset Management</strong>: Generate asset constants and watch for changes</li>
+<li><strong>Asset Cleaning</strong>: Check and clean unused assets from your project</li>
+<li><strong>Project Cleaning</strong>: Standard and full project cleaning with build_runner support</li>
+<li><strong>Code Formatting</strong>: Format Dart code with validation options</li>
+<li><strong>Build Management</strong>: Build APKs with release mode and flavor support</li>
+<li><strong>Localization</strong>: Generate localization files using flutter gen-l10n</li>
+<li><strong>Testing</strong>: Run tests with coverage reporting and group filtering</li>
+<li><strong>Project Initialization</strong>: Set up project configurations and linting rules</li>
+<li><strong>Package Management</strong>: Manage dependencies and check for outdated packages</li>
+<li><strong>Package Cleaning</strong>: Check and clean unused packages from your project</li>
+<li><strong>Documentation</strong>: Generate API documentation with validation</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<h3 id="from-pubdev">From pub.dev</h3>
+<pre class="language-bash"><code class="language-bash">dart pub global activate qftools
+</code></pre>
+<h3 id="from-source">From source</h3>
+<pre class="language-bash"><code class="language-bash">git clone https://github.com/vignarajj/qftools.git
+cd qftools
+dart pub global activate --source path .
+</code></pre>
+<h2 id="usage">Usage</h2>
+<h3 id="basic-commands">Basic Commands</h3>
+<pre class="language-bash"><code class="language-bash"># Generate asset constants
+qftools assets
+
+# Watch for asset changes
+qftools assets --watch
+
+# Check for unused assets
+qftools assets-cleaner --check
+
+# Clean unused assets
+qftools assets-cleaner --clean
+
+# Run flutter pub get
+qftools get
+
+# Clean project (flutter clean + pub get)
+qftools clean
+
+# Full clean with build_runner
+qftools clean --full
+
+# Format code
+qftools format
+
+# Check formatting without applying changes
+qftools format --check
+
+# Build APK in debug mode
+qftools build
+
+# Build APK in release mode
+qftools build --release
+
+# Build APK with flavor
+qftools build --release --flavor production
+
+# Generate localization files
+qftools l10n
+
+# Generate l10n with custom template
+qftools l10n --template lib/l10n/app_en.arb
+
+# Run tests
+qftools test
+
+# Run tests with coverage
+qftools test --coverage
+
+# Run specific test group
+qftools test --group widgets
+
+# Initialize project configurations
+qftools init
+
+# Force overwrite existing files
+qftools init --force
+
+# Check for outdated packages
+qftools packages --outdated
+
+# Add new packages
+qftools packages --add "provider,dio,flutter_bloc"
+
+# Check for unused packages
+qftools packages-cleaner --check
+
+# Clean unused packages
+qftools packages-cleaner --clean
+
+# Generate API documentation
+qftools docs
+
+# Validate documentation coverage
+qftools docs --validate
+</code></pre>
+<h3 id="global-options">Global Options</h3>
+<pre class="language-bash"><code class="language-bash"># Enable verbose logging
+qftools &lt;command&gt; --verbose
+
+# Show help
+qftools --help
+qftools &lt;command&gt; --help
+</code></pre>
+<h2 id="commands-reference">Commands Reference</h2>
+<h3 id="assets"><code>assets</code></h3>
+<p>Generate asset constants in <code>lib/assets/app_assets.dart</code></p>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--watch</code>: Watch for asset changes and regenerate automatically</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre class="language-bash"><code class="language-bash">qftools assets --watch
+</code></pre>
+<h3 id="assets-cleaner"><code>assets-cleaner</code></h3>
+<p>Check and clean unused assets from your Flutter project</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--check</code>: Check for unused assets without removing them</li>
+<li><code>--clean</code>: Remove unused assets from the project</li>
+</ul>
+<p><strong>Features:</strong></p>
+<ul>
+<li>Scans common asset directories (assets, lib/assets, images, fonts)</li>
+<li>Checks for asset references in Dart code and pubspec.yaml</li>
+<li>Shows file size savings before deletion</li>
+<li>Interactive confirmation before removing files</li>
+<li>Supports various asset reference patterns</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre class="language-bash"><code class="language-bash"># Check for unused assets
+qftools assets-cleaner --check
+
+# Remove unused assets (with confirmation)
+qftools assets-cleaner --clean
+</code></pre>
+<h3 id="get"><code>get</code></h3>
+<p>Run <code>flutter pub get</code> to install dependencies</p>
+<h3 id="clean"><code>clean</code></h3>
+<p>Clean the project and reinstall dependencies</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--full</code>: Perform full clean including build_runner operations</li>
+</ul>
+<p><strong>Modes:</strong></p>
+<ul>
+<li>Standard: <code>flutter clean</code> + <code>flutter pub get</code></li>
+<li>Full: <code>build_runner clean</code> + <code>build_runner build --delete-conflicting-outputs</code> + <code>flutter clean</code> + <code>flutter pub get</code></li>
+</ul>
+<h3 id="format"><code>format</code></h3>
+<p>Format Dart code using <code>dart format</code></p>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--check</code>: Check formatting without applying changes</li>
+</ul>
+<h3 id="build"><code>build</code></h3>
+<p>Build APK files</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--release</code>: Build in release mode (default: debug)</li>
+<li><code>--flavor &lt;flavor&gt;</code>: Specify build flavor</li>
+</ul>
+<h3 id="l10n"><code>l10n</code></h3>
+<p>Generate localization files using <code>flutter gen-l10n</code></p>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--template &lt;path&gt;</code>: Specify ARB template file path</li>
+</ul>
+<p><strong>Requirements:</strong></p>
+<ul>
+<li><code>flutter_localizations</code> dependency in pubspec.yaml</li>
+<li><code>generate: true</code> in pubspec.yaml</li>
+</ul>
+<h3 id="test"><code>test</code></h3>
+<p>Run unit and widget tests</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--coverage</code>: Generate coverage reports</li>
+<li><code>--group &lt;group&gt;</code>: Run specific test groups</li>
+</ul>
+<h3 id="init"><code>init</code></h3>
+<p>Initialize project configurations</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--force</code>: Overwrite existing files</li>
+</ul>
+<p><strong>Creates:</strong></p>
+<ul>
+<li><code>analysis_options.yaml</code>: Comprehensive linting rules</li>
+<li><code>.gitignore</code>: Flutter-specific ignore patterns</li>
+<li><code>.qftools.yaml</code>: QfTools configuration file</li>
+</ul>
+<h3 id="packages"><code>packages</code></h3>
+<p>Manage project dependencies</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--outdated</code>: Check for outdated packages</li>
+<li><code>--add &lt;packages&gt;</code>: Add new packages (comma-separated)</li>
+</ul>
+<h3 id="packages-cleaner"><code>packages-cleaner</code></h3>
+<p>Check and clean unused packages from your Flutter project</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--check</code>: Check for unused packages without removing them</li>
+<li><code>--clean</code>: Remove unused packages from the project</li>
+</ul>
+<p><strong>Features:</strong></p>
+<ul>
+<li>Analyzes dependencies and dev_dependencies from pubspec.yaml</li>
+<li>Scans Dart code for import/export statements</li>
+<li>Protects system packages (flutter, flutter_test, etc.)</li>
+<li>Checks for package references in assets and fonts sections</li>
+<li>Interactive confirmation before removing packages</li>
+<li>Automatically runs <code>flutter pub get</code> after cleanup</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre class="language-bash"><code class="language-bash"># Check for unused packages
+qftools packages-cleaner --check
+
+# Remove unused packages (with confirmation)
+qftools packages-cleaner --clean
+</code></pre>
+<h3 id="docs"><code>docs</code></h3>
+<p>Generate API documentation</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--validate</code>: Validate documentation coverage</li>
+</ul>
+<h2 id="configuration">Configuration</h2>
+<p>QfTools supports a <code>.qftools.yaml</code> configuration file for customizing default behavior:</p>
+<pre class="language-yaml"><code class="language-yaml"># Asset generation settings
+assets:
+  directories:
+    - assets
+    - lib/assets
+    - images
+    - fonts
+  output: lib/assets/app_assets.dart
+  watch: false
+
+# Cleaner settings
+cleaners:
+  assets:
+    # Additional asset directories to scan
+    directories:
+      - custom_assets
+    # File extensions to include
+    extensions:
+      - .png
+      - .jpg
+      - .jpeg
+      - .gif
+      - .svg
+      - .webp
+      - .ttf
+      - .otf
+  packages:
+    # Additional system packages to protect
+    protected_packages:
+      - custom_framework
+      - internal_package
+
+# Build settings
+build:
+  default_mode: debug
+  default_flavor: development
+
+# Test settings
+test:
+  coverage: true
+  coverage_exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+
+# Documentation settings
+docs:
+  output: doc/api
+  validate: true
+</code></pre>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="asset-management">Asset Management</h3>
+<ul>
+<li>Use the <code>assets-cleaner</code> regularly to keep your project lean</li>
+<li>Organize assets in standard directories (assets/, images/, fonts/)</li>
+<li>Use consistent naming conventions for assets</li>
+<li>Run <code>qftools assets --watch</code> during development for automatic constant generation</li>
+</ul>
+<h3 id="package-management">Package Management</h3>
+<ul>
+<li>Run <code>packages-cleaner --check</code> before releases to identify unused dependencies</li>
+<li>Use <code>packages --outdated</code> to keep dependencies up-to-date</li>
+<li>Review package removals carefully before confirming cleanup</li>
+</ul>
+<h3 id="project-maintenance">Project Maintenance</h3>
+<ul>
+<li>Use <code>qftools clean --full</code> when build issues occur</li>
+<li>Run <code>qftools format</code> before committing code</li>
+<li>Use <code>qftools test --coverage</code> to maintain code quality</li>
+<li>Initialize projects with <code>qftools init</code> for consistent configuration</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
+<p><strong>Asset constants not generated:</strong></p>
+<ul>
+<li>Ensure assets are in supported directories</li>
+<li>Check file permissions</li>
+<li>Verify pubspec.yaml asset declarations</li>
+</ul>
+<p><strong>Unused assets not detected:</strong></p>
+<ul>
+<li>Some dynamic asset loading patterns may not be detected</li>
+<li>Check for string interpolation in asset paths</li>
+<li>Verify asset references in platform-specific code</li>
+</ul>
+<p><strong>Package cleanup removes needed packages:</strong></p>
+<ul>
+<li>Check if packages are used via platform channels</li>
+<li>Verify packages used in build scripts or CI/CD</li>
+<li>Review packages used in code generation</li>
+</ul>
+<h3 id="getting-help">Getting Help</h3>
+<pre class="language-bash"><code class="language-bash"># Show general help
+qftools --help
+
+# Show command-specific help
+qftools &lt;command&gt; --help
+
+# Enable verbose logging for debugging
+qftools &lt;command&gt; --verbose
+</code></pre>
+<h2 id="contributing">Contributing</h2>
+<p>Contributions are welcome! Please feel free to submit a Pull Request.</p>
+<h2 id="license">License</h2>
+<p>This project is licensed under the MIT License - see the LICENSE file for details.</p>
+<h2 id="platform-support">Platform Support</h2>
+<p>QfTools is a Dart CLI tool and works on all major platforms:</p>
+<ul>
+<li><strong>macOS</strong></li>
+<li><strong>Linux</strong></li>
+<li><strong>Windows</strong></li>
+</ul>
+<p>You only need the Dart SDK (&gt;=3.0.0 &lt;4.0.0) installed. For Flutter-specific features, ensure Flutter is installed and available in your PATH.</p>
+</section>
+
+
+      <section class="summary">
+          <h2>Libraries</h2>
+        <dl>
+          <dt id="qf_tools">
+  <span class="name"><a href="qf_tools/">qftools</a></span> 
+
+</dt>
+<dd>Support for doing something awesome.
+</dd>
+
+        </dl>
+      </section>
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="https://github.com/vignarajj/qftools">qftools package</a></li>
+</ol>
+
+    <h5 class="hidden-xs"><span class="package-name">qftools</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="qf_tools/">qftools</a></li>
+</ol>
+
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div>
+</main>
+<footer>
+  <span class="no-break">
+    qftools
+      1.0.2
+  </span>
+  
+</footer>
+
+
+<script src="static-assets/highlight.pack.js?v1"></script>
+<script src="static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+
