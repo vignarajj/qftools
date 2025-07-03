@@ -21,14 +21,14 @@ A comprehensive command-line interface tool for streamlining Flutter project man
 ### From pub.dev
 
 ```bash
-dart pub global activate qf_tools
+dart pub global activate qftools
 ```
 
 ### From source
 
 ```bash
 git clone https://github.com/vignarajj/qftools.git
-cd qf_tools
+cd qftools
 dart pub global activate --source path .
 ```
 
@@ -38,90 +38,90 @@ dart pub global activate --source path .
 
 ```bash
 # Generate asset constants
-qf_tools assets
+qftools assets
 
 # Watch for asset changes
-qf_tools assets --watch
+qftools assets --watch
 
 # Check for unused assets
-qf_tools assets-cleaner --check
+qftools assets-cleaner --check
 
 # Clean unused assets
-qf_tools assets-cleaner --clean
+qftools assets-cleaner --clean
 
 # Run flutter pub get
-qf_tools get
+qftools get
 
 # Clean project (flutter clean + pub get)
-qf_tools clean
+qftools clean
 
 # Full clean with build_runner
-qf_tools clean --full
+qftools clean --full
 
 # Format code
-qf_tools format
+qftools format
 
 # Check formatting without applying changes
-qf_tools format --check
+qftools format --check
 
 # Build APK in debug mode
-qf_tools build
+qftools build
 
 # Build APK in release mode
-qf_tools build --release
+qftools build --release
 
 # Build APK with flavor
-qf_tools build --release --flavor production
+qftools build --release --flavor production
 
 # Generate localization files
-qf_tools l10n
+qftools l10n
 
 # Generate l10n with custom template
-qf_tools l10n --template lib/l10n/app_en.arb
+qftools l10n --template lib/l10n/app_en.arb
 
 # Run tests
-qf_tools test
+qftools test
 
 # Run tests with coverage
-qf_tools test --coverage
+qftools test --coverage
 
 # Run specific test group
-qf_tools test --group widgets
+qftools test --group widgets
 
 # Initialize project configurations
-qf_tools init
+qftools init
 
 # Force overwrite existing files
-qf_tools init --force
+qftools init --force
 
 # Check for outdated packages
-qf_tools packages --outdated
+qftools packages --outdated
 
 # Add new packages
-qf_tools packages --add "provider,dio,flutter_bloc"
+qftools packages --add "provider,dio,flutter_bloc"
 
 # Check for unused packages
-qf_tools packages-cleaner --check
+qftools packages-cleaner --check
 
 # Clean unused packages
-qf_tools packages-cleaner --clean
+qftools packages-cleaner --clean
 
 # Generate API documentation
-qf_tools docs
+qftools docs
 
 # Validate documentation coverage
-qf_tools docs --validate
+qftools docs --validate
 ```
 
 ### Global Options
 
 ```bash
 # Enable verbose logging
-qf_tools <command> --verbose
+qftools <command> --verbose
 
 # Show help
-qf_tools --help
-qf_tools <command> --help
+qftools --help
+qftools <command> --help
 ```
 
 ## Commands Reference
@@ -134,7 +134,7 @@ Generate asset constants in `lib/assets/app_assets.dart`
 
 **Example:**
 ```bash
-qf_tools assets --watch
+qftools assets --watch
 ```
 
 ### `assets-cleaner`
@@ -154,10 +154,10 @@ Check and clean unused assets from your Flutter project
 **Example:**
 ```bash
 # Check for unused assets
-qf_tools assets-cleaner --check
+qftools assets-cleaner --check
 
 # Remove unused assets (with confirmation)
-qf_tools assets-cleaner --clean
+qftools assets-cleaner --clean
 ```
 
 ### `get`
@@ -239,10 +239,10 @@ Check and clean unused packages from your Flutter project
 **Example:**
 ```bash
 # Check for unused packages
-qf_tools packages-cleaner --check
+qftools packages-cleaner --check
 
 # Remove unused packages (with confirmation)
-qf_tools packages-cleaner --clean
+qftools packages-cleaner --clean
 ```
 
 ### `docs`
@@ -312,7 +312,7 @@ docs:
 - Use the `assets-cleaner` regularly to keep your project lean
 - Organize assets in standard directories (assets/, images/, fonts/)
 - Use consistent naming conventions for assets
-- Run `qf_tools assets --watch` during development for automatic constant generation
+- Run `qftools assets --watch` during development for automatic constant generation
 
 ### Package Management
 - Run `packages-cleaner --check` before releases to identify unused dependencies
@@ -320,10 +320,10 @@ docs:
 - Review package removals carefully before confirming cleanup
 
 ### Project Maintenance
-- Use `qf_tools clean --full` when build issues occur
-- Run `qf_tools format` before committing code
-- Use `qf_tools test --coverage` to maintain code quality
-- Initialize projects with `qf_tools init` for consistent configuration
+- Use `qftools clean --full` when build issues occur
+- Run `qftools format` before committing code
+- Use `qftools test --coverage` to maintain code quality
+- Initialize projects with `qftools init` for consistent configuration
 
 ## Troubleshooting
 
@@ -348,13 +348,13 @@ docs:
 
 ```bash
 # Show general help
-qf_tools --help
+qftools --help
 
 # Show command-specific help
-qf_tools <command> --help
+qftools <command> --help
 
 # Enable verbose logging for debugging
-qf_tools <command> --verbose
+qftools <command> --verbose
 ```
 
 ## Contributing

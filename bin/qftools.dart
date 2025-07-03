@@ -23,6 +23,7 @@ Future<void> main(List<String> arguments) async {
   // Configure subcommands
   _configureAssetsCommand(parser.commands['assets']!);
   _configureAssetsCleanerCommand(parser.commands['assets-cleaner']!);
+  _configureGetCommand(parser.commands['get']!);
   _configureCleanCommand(parser.commands['clean']!);
   _configureFormatCommand(parser.commands['format']!);
   _configureBuildCommand(parser.commands['build']!);
@@ -38,7 +39,7 @@ Future<void> main(List<String> arguments) async {
 
     if (results['help'] as bool || results.command == null) {
       print('QfTools - Flutter Project Management CLI\n');
-      print('Usage: qf_tools <command> [options]\n');
+      print('Usage: qftools <command> [options]\n');
       print('Commands:');
       print('  assets            Generate asset constants');
       print('  assets-cleaner    Check and clean unused assets');
@@ -55,14 +56,14 @@ Future<void> main(List<String> arguments) async {
       print('\nGlobal options:');
       print('  -v, --verbose    Enable verbose logging');
       print('  -h, --help       Show this help message');
-      print('\nUse "qf_tools <command> --help" for more information about a command.');
+      print('\nUse "qftools <command> --help" for more information about a command.');
       return;
     }
 
     // Handle subcommand help
     if (results.command != null && results.command!['help'] as bool) {
       print('QfTools - ${results.command!.name} command\n');
-      print('Usage: qf_tools ${results.command!.name} [options]\n');
+      print('Usage: qftools ${results.command!.name} [options]\n');
       print('Options:');
       print(parser.commands[results.command!.name]!.usage);
       return;
@@ -127,6 +128,10 @@ void _configureAssetsCleanerCommand(ArgParser parser) {
   parser.addFlag('help', abbr: 'h', help: 'Show help for this command');
   parser.addFlag('check', help: 'Check for unused assets without removing them');
   parser.addFlag('clean', help: 'Remove unused assets from the project');
+}
+
+void _configureGetCommand(ArgParser parser) {
+  parser.addFlag('help', abbr: 'h', help: 'Show help for this command');
 }
 
 void _configureCleanCommand(ArgParser parser) {

@@ -1,6 +1,6 @@
 name: qftools
 description: A comprehensive Flutter project management CLI tool for streamlining development workflows.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/vignarajj/qftools
 repository: https://github.com/vignarajj/qftools
 
@@ -21,4 +21,4 @@ dev_dependencies:
     sdk: flutter
 
 executables:
-  qf_tools:
+  qftools:
