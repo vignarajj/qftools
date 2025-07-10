@@ -1,7 +1,5 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
-library qf_tools;
+/// QfTools library
+library qftools;
 
 export 'src/qftools_base.dart';
 export 'src/commands/assets_command.dart';
@@ -15,6 +13,8 @@ export 'src/commands/init_command.dart';
 export 'src/commands/packages_command.dart';
 export 'src/commands/packages_cleaner_command.dart';
 export 'src/commands/docs_command.dart';
+export 'src/commands/barrel_command.dart';
+export 'src/commands/organize_imports_command.dart';
 export 'src/utils/logger.dart';
 export 'src/utils/file_utils.dart';
 export 'src/utils/process_utils.dart';

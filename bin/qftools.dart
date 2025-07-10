@@ -18,7 +18,9 @@ Future<void> main(List<String> arguments) async {
     ..addCommand('init')
     ..addCommand('packages')
     ..addCommand('packages-cleaner')
-    ..addCommand('docs');
+    ..addCommand('docs')
+    ..addCommand('barrel')
+    ..addCommand('organize-imports');
 
   // Configure subcommands
   _configureAssetsCommand(parser.commands['assets']!);
@@ -33,6 +35,8 @@ Future<void> main(List<String> arguments) async {
   _configurePackagesCommand(parser.commands['packages']!);
   _configurePackagesCleanerCommand(parser.commands['packages-cleaner']!);
   _configureDocsCommand(parser.commands['docs']!);
+  _configureBarrelCommand(parser.commands['barrel']!);
+  _configureOrganizeImportsCommand(parser.commands['organize-imports']!);
 
   try {
     final results = parser.parse(arguments);
@@ -53,6 +57,8 @@ Future<void> main(List<String> arguments) async {
       print('  packages          Manage dependencies');
       print('  packages-cleaner  Check and clean unused packages');
       print('  docs              Generate API documentation');
+      print('  barrel            Create barrel files for directories');
+      print('  organize-imports  Organize imports in Dart files');
       print('\nGlobal options:');
       print('  -v, --verbose    Enable verbose logging');
       print('  -h, --help       Show this help message');
@@ -108,6 +114,12 @@ Future<void> main(List<String> arguments) async {
         break;
       case 'docs':
         await qfTools.runDocs(results.command!);
+        break;
+      case 'barrel':
+        await qfTools.runBarrel(results.command!);
+        break;
+      case 'organize-imports':
+        await qfTools.runOrganizeImports(results.command!);
         break;
       default:
         print('Unknown command: ${results.command?.name}');
@@ -181,4 +193,13 @@ void _configurePackagesCleanerCommand(ArgParser parser) {
 void _configureDocsCommand(ArgParser parser) {
   parser.addFlag('help', abbr: 'h', help: 'Show help for this command');
   parser.addFlag('validate', help: 'Check documentation coverage');
+}
+
+void _configureBarrelCommand(ArgParser parser) {
+  parser.addFlag('help', abbr: 'h', help: 'Show help for this command');
+}
+
+void _configureOrganizeImportsCommand(ArgParser parser) {
+  parser.addFlag('help', abbr: 'h', help: 'Show help for this command');
+  parser.addFlag('barrel', help: 'Use barrel files for project imports optimization');
 }

@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2025-01-27
+
+### Enhanced
+- **Organize Imports Interactive Mode**: Enhanced `organize-imports` command with interactive file selection
+  - When no file is specified, automatically discovers all `.dart` files in `lib/` directory
+  - Displays numbered list of all available Dart files for selection
+  - Interactive prompt for barrel file optimization option
+  - Recursive directory scanning for comprehensive file discovery
+  - Improved user experience with guided workflow
+  - Maintains backward compatibility with direct file specification
+
+### Added
+- Interactive file selection for organize-imports command
+- Automatic Dart file discovery in lib/ directory and subdirectories
+- User-friendly numbered file listing
+- Interactive barrel file option prompt
+- Enhanced error handling for file selection
+
+### Improved
+- Organize imports command now supports both interactive and direct modes
+- Better user guidance for import organization workflow
+- Consistent file sorting for predictable file listing
+
 ## [1.0.2]
  - Updated the dart doc.
 

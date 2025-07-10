@@ -11,6 +11,8 @@ import 'commands/init_command.dart';
 import 'commands/packages_command.dart';
 import 'commands/packages_cleaner_command.dart';
 import 'commands/docs_command.dart';
+import 'commands/barrel_command.dart';
+import 'commands/organize_imports_command.dart';
 import 'utils/logger.dart';
 
 class QfTools {
@@ -27,6 +29,8 @@ class QfTools {
   late final PackagesCommand packagesCommand;
   late final PackagesCleanerCommand packagesCleanerCommand;
   late final DocsCommand docsCommand;
+  late final BarrelCommand barrelCommand;
+  late final OrganizeImportsCommand organizeImportsCommand;
 
   QfTools({this.verbose = false}) {
     logger = Logger(verbose: verbose);
@@ -41,6 +45,8 @@ class QfTools {
     packagesCommand = PackagesCommand(logger);
     packagesCleanerCommand = PackagesCleanerCommand(logger);
     docsCommand = DocsCommand(logger);
+    barrelCommand = BarrelCommand(logger);
+    organizeImportsCommand = OrganizeImportsCommand(logger);
   }
 
   /// Verify we're in a Flutter project directory
@@ -119,5 +125,17 @@ class QfTools {
   Future<void> runDocs(ArgResults results) async {
     _verifyFlutterProject();
     await docsCommand.execute(results);
+  }
+
+  /// Execute barrel command
+  Future<void> runBarrel(ArgResults results) async {
+    _verifyFlutterProject();
+    await barrelCommand.execute(results);
+  }
+
+  /// Execute organize imports command
+  Future<void> runOrganizeImports(ArgResults results) async {
+    _verifyFlutterProject();
+    await organizeImportsCommand.execute(results);
   }
 }
