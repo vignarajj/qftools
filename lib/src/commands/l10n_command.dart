@@ -21,7 +21,8 @@ class L10nCommand {
     // Check if l10n is configured in pubspec.yaml
     if (!_isL10nConfigured()) {
       logger.warning('Localization not configured in pubspec.yaml');
-      logger.info('Add flutter_localizations to dependencies and configure l10n in pubspec.yaml');
+      logger.info(
+          'Add flutter_localizations to dependencies and configure l10n in pubspec.yaml');
       return;
     }
 
@@ -35,13 +36,15 @@ class L10nCommand {
     }
 
     // Run flutter gen-l10n
-    final result = await ProcessUtils.runFlutterCommand(['gen-l10n'], logger: logger);
+    final result =
+        await ProcessUtils.runFlutterCommand(['gen-l10n'], logger: logger);
 
     if (result.exitCode == 0) {
       logger.success('Localization files generated successfully');
       logger.info('Generated files are in $l10nDir directory');
     } else {
-      logger.error('Localization generation failed with exit code ${result.exitCode}');
+      logger.error(
+          'Localization generation failed with exit code ${result.exitCode}');
       exit(result.exitCode);
     }
   }
@@ -53,7 +56,7 @@ class L10nCommand {
 
       final content = pubspecFile.readAsStringSync();
       return content.contains('flutter_localizations:') &&
-             content.contains('generate: true');
+          content.contains('generate: true');
     } catch (e) {
       return false;
     }

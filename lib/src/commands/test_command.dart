@@ -67,10 +67,12 @@ class TestCommand {
         );
 
         if (result.exitCode == 0) {
-          logger.success('HTML coverage report generated: coverage/html/index.html');
+          logger.success(
+              'HTML coverage report generated: coverage/html/index.html');
         }
       } else {
-        logger.info('Install lcov for HTML coverage reports: brew install lcov (macOS) or apt-get install lcov (Ubuntu)');
+        logger.info(
+            'Install lcov for HTML coverage reports: brew install lcov (macOS) or apt-get install lcov (Ubuntu)');
       }
     }
   }

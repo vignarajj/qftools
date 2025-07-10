@@ -27,7 +27,8 @@ class DocsCommand {
       logger.success('API documentation generated successfully');
       logger.info('Documentation available in doc/api/ directory');
     } else {
-      logger.error('Documentation generation failed with exit code ${result.exitCode}');
+      logger.error(
+          'Documentation generation failed with exit code ${result.exitCode}');
       exit(result.exitCode);
     }
   }
@@ -36,7 +37,9 @@ class DocsCommand {
     logger.step('Validating documentation coverage...');
 
     // Run dart doc with validation
-    final result = await ProcessUtils.runDartCommand(['doc', '--validate-links'], logger: logger);
+    final result = await ProcessUtils.runDartCommand(
+        ['doc', '--validate-links'],
+        logger: logger);
 
     if (result.exitCode == 0) {
       logger.success('Documentation validation completed');
@@ -52,7 +55,8 @@ class DocsCommand {
 
     // This is a simplified check - in a real implementation, you might parse
     // the dart doc output to get actual coverage statistics
-    final result = await ProcessUtils.runDartCommand(['doc', '--dry-run'], logger: logger, showOutput: false);
+    final result = await ProcessUtils.runDartCommand(['doc', '--dry-run'],
+        logger: logger, showOutput: false);
 
     if (result.exitCode == 0) {
       final output = result.stdout.toString();

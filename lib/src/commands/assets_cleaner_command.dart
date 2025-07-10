@@ -20,7 +20,8 @@ class AssetsCleanerCommand {
     } else if (clean) {
       await _cleanUnusedAssets();
     } else {
-      logger.info('Use --check to find unused assets or --clean to remove them');
+      logger
+          .info('Use --check to find unused assets or --clean to remove them');
       logger.info('Example: qf_tools assets-cleaner --check');
     }
   }
@@ -43,7 +44,8 @@ class AssetsCleanerCommand {
 
     final totalSize = await _calculateTotalSize(unusedAssets);
     logger.info('Total size of unused assets: ${_formatBytes(totalSize)}');
-    logger.info('Run "qf_tools assets-cleaner --clean" to remove unused assets');
+    logger
+        .info('Run "qf_tools assets-cleaner --clean" to remove unused assets');
   }
 
   /// Clean unused assets from the project
@@ -114,13 +116,13 @@ class AssetsCleanerCommand {
 
       // Check various ways an asset might be referenced
       final searchPatterns = [
-        assetPath,                    // Full asset path
-        fileName,                     // File name with extension
-        fileNameWithoutExt,          // File name without extension
-        "'$assetPath'",              // Quoted asset path
-        '"$assetPath"',              // Double quoted asset path
-        "'$fileName'",               // Quoted file name
-        '"$fileName"',               // Double quoted file name
+        assetPath, // Full asset path
+        fileName, // File name with extension
+        fileNameWithoutExt, // File name without extension
+        "'$assetPath'", // Quoted asset path
+        '"$assetPath"', // Double quoted asset path
+        "'$fileName'", // Quoted file name
+        '"$fileName"', // Double quoted file name
       ];
 
       for (final pattern in searchPatterns) {
@@ -215,7 +217,8 @@ class AssetsCleanerCommand {
   String _formatBytes(int bytes) {
     if (bytes < 1024) return '$bytes B';
     if (bytes < 1024 * 1024) return '${(bytes / 1024).toStringAsFixed(1)} KB';
-    if (bytes < 1024 * 1024 * 1024) return '${(bytes / (1024 * 1024)).toStringAsFixed(1)} MB';
+    if (bytes < 1024 * 1024 * 1024)
+      return '${(bytes / (1024 * 1024)).toStringAsFixed(1)} MB';
     return '${(bytes / (1024 * 1024 * 1024)).toStringAsFixed(1)} GB';
   }
 }

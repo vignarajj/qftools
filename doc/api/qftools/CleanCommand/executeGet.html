@@ -70,7 +70,8 @@
   <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; executeGet(ArgResults results) async {
   logger.step(&#39;Running flutter pub get...&#39;);
 
-  final result = await ProcessUtils.runFlutterCommand([&#39;pub&#39;, &#39;get&#39;], logger: logger);
+  final result =
+      await ProcessUtils.runFlutterCommand([&#39;pub&#39;, &#39;get&#39;], logger: logger);
 
   if (result.exitCode == 0) {
     logger.success(&#39;Flutter pub get completed successfully&#39;);

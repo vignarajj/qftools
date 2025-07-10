@@ -71,14 +71,16 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static List&lt;File&gt; getAllFiles(String directoryPath, {List&lt;String&gt;? extensions}) {
+  <pre class="language-dart"><code class="language-dart">static List&lt;File&gt; getAllFiles(String directoryPath,
+    {List&lt;String&gt;? extensions}) {
   final dir = Directory(directoryPath);
   if (!dir.existsSync()) return [];
 
   final files = &lt;File&gt;[];
   for (final entity in dir.listSync(recursive: true)) {
     if (entity is File) {
-      if (extensions == null || extensions.contains(path.extension(entity.path))) {
+      if (extensions == null ||
+          extensions.contains(path.extension(entity.path))) {
         files.add(entity);
       }
     }

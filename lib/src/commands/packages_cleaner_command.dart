@@ -19,7 +19,8 @@ class PackagesCleanerCommand {
     } else if (clean) {
       await _cleanUnusedPackages();
     } else {
-      logger.info('Use --check to find unused packages or --clean to remove them');
+      logger.info(
+          'Use --check to find unused packages or --clean to remove them');
       logger.info('Example: qf_tools packages-cleaner --check');
     }
   }
@@ -40,7 +41,8 @@ class PackagesCleanerCommand {
       logger.info('  - $package');
     }
 
-    logger.info('Run "qf_tools packages-cleaner --clean" to remove unused packages');
+    logger.info(
+        'Run "qf_tools packages-cleaner --clean" to remove unused packages');
   }
 
   /// Clean unused packages from the project
@@ -50,7 +52,8 @@ class PackagesCleanerCommand {
     final unusedPackages = await _findUnusedPackages();
 
     if (unusedPackages.isEmpty) {
-      logger.success('No unused packages found! Your project is already clean.');
+      logger
+          .success('No unused packages found! Your project is already clean.');
       return;
     }
 
@@ -74,9 +77,8 @@ class PackagesCleanerCommand {
       try {
         logger.step('Removing package: $package');
         final result = await ProcessUtils.runFlutterCommand(
-          ['pub', 'remove', package],
-          logger: logger
-        );
+            ['pub', 'remove', package],
+            logger: logger);
 
         if (result.exitCode == 0) {
           removedCount++;
@@ -174,10 +176,10 @@ class PackagesCleanerCommand {
           inDevDependencies = true;
           continue;
         } else if (trimmed.startsWith('flutter:') ||
-                   trimmed.startsWith('dependency_overrides:') ||
-                   trimmed.startsWith('assets:') ||
-                   trimmed.startsWith('fonts:') ||
-                   !trimmed.startsWith(' ')) {
+            trimmed.startsWith('dependency_overrides:') ||
+            trimmed.startsWith('assets:') ||
+            trimmed.startsWith('fonts:') ||
+            !trimmed.startsWith(' ')) {
           inDependencies = false;
           inDevDependencies = false;
           continue;
@@ -280,7 +282,7 @@ class PackagesCleanerCommand {
 
       // Check if package is referenced in assets or fonts sections
       return content.contains('packages/$packageName') ||
-             content.contains('package:$packageName');
+          content.contains('package:$packageName');
     } catch (e) {
       return false;
     }

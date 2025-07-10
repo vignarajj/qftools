@@ -21,7 +21,8 @@ class CleanCommand {
   Future<void> executeGet(ArgResults results) async {
     logger.step('Running flutter pub get...');
 
-    final result = await ProcessUtils.runFlutterCommand(['pub', 'get'], logger: logger);
+    final result =
+        await ProcessUtils.runFlutterCommand(['pub', 'get'], logger: logger);
 
     if (result.exitCode == 0) {
       logger.success('Flutter pub get completed successfully');
@@ -36,19 +37,23 @@ class CleanCommand {
 
     // Run flutter clean
     logger.info('Running flutter clean...');
-    final cleanResult = await ProcessUtils.runFlutterCommand(['clean'], logger: logger);
+    final cleanResult =
+        await ProcessUtils.runFlutterCommand(['clean'], logger: logger);
 
     if (cleanResult.exitCode != 0) {
-      logger.error('Flutter clean failed with exit code ${cleanResult.exitCode}');
+      logger
+          .error('Flutter clean failed with exit code ${cleanResult.exitCode}');
       exit(cleanResult.exitCode);
     }
 
     // Run flutter pub get
     logger.info('Running flutter pub get...');
-    final getResult = await ProcessUtils.runFlutterCommand(['pub', 'get'], logger: logger);
+    final getResult =
+        await ProcessUtils.runFlutterCommand(['pub', 'get'], logger: logger);
 
     if (getResult.exitCode != 0) {
-      logger.error('Flutter pub get failed with exit code ${getResult.exitCode}');
+      logger
+          .error('Flutter pub get failed with exit code ${getResult.exitCode}');
       exit(getResult.exitCode);
     }
 
@@ -76,7 +81,14 @@ class CleanCommand {
       // Run build_runner build
       logger.info('Running build_runner build...');
       final buildResult = await ProcessUtils.runFlutterCommand(
-        ['packages', 'pub', 'run', 'build_runner', 'build', '--delete-conflicting-outputs'],
+        [
+          'packages',
+          'pub',
+          'run',
+          'build_runner',
+          'build',
+          '--delete-conflicting-outputs'
+        ],
         logger: logger,
       );
 
@@ -89,19 +101,23 @@ class CleanCommand {
 
     // Run flutter clean
     logger.info('Running flutter clean...');
-    final cleanResult = await ProcessUtils.runFlutterCommand(['clean'], logger: logger);
+    final cleanResult =
+        await ProcessUtils.runFlutterCommand(['clean'], logger: logger);
 
     if (cleanResult.exitCode != 0) {
-      logger.error('Flutter clean failed with exit code ${cleanResult.exitCode}');
+      logger
+          .error('Flutter clean failed with exit code ${cleanResult.exitCode}');
       exit(cleanResult.exitCode);
     }
 
     // Run flutter pub get
     logger.info('Running flutter pub get...');
-    final getResult = await ProcessUtils.runFlutterCommand(['pub', 'get'], logger: logger);
+    final getResult =
+        await ProcessUtils.runFlutterCommand(['pub', 'get'], logger: logger);
 
     if (getResult.exitCode != 0) {
-      logger.error('Flutter pub get failed with exit code ${getResult.exitCode}');
+      logger
+          .error('Flutter pub get failed with exit code ${getResult.exitCode}');
       exit(getResult.exitCode);
     }
 

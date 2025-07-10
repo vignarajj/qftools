@@ -94,7 +94,8 @@
 
   if (targetFile == null || targetFile.isEmpty) {
     logger.error(&#39;Please specify a Dart file to organize imports&#39;);
-    logger.info(&#39;Usage: qftools organize-imports &lt;path&#47;file.dart&gt; [--barrel]&#39;);
+    logger
+        .info(&#39;Usage: qftools organize-imports &lt;path&#47;file.dart&gt; [--barrel]&#39;);
     return;
   }
 

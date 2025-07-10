@@ -21,7 +21,8 @@ class FormatCommand {
   Future<void> _formatCode() async {
     logger.step('Formatting Dart code...');
 
-    final result = await ProcessUtils.runDartCommand(['format', '.'], logger: logger);
+    final result =
+        await ProcessUtils.runDartCommand(['format', '.'], logger: logger);
 
     if (result.exitCode == 0) {
       logger.success('Code formatting completed successfully');
@@ -34,7 +35,9 @@ class FormatCommand {
   Future<void> _checkFormat() async {
     logger.step('Checking code formatting...');
 
-    final result = await ProcessUtils.runDartCommand(['format', '--output=none', '--set-exit-if-changed', '.'], logger: logger);
+    final result = await ProcessUtils.runDartCommand(
+        ['format', '--output=none', '--set-exit-if-changed', '.'],
+        logger: logger);
 
     if (result.exitCode == 0) {
       logger.success('All files are properly formatted');

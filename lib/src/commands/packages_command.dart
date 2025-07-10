@@ -17,14 +17,16 @@ class PackagesCommand {
     } else if (add != null) {
       await _addPackages(add);
     } else {
-      logger.info('Use --outdated to check for outdated packages or --add to add new packages');
+      logger.info(
+          'Use --outdated to check for outdated packages or --add to add new packages');
     }
   }
 
   Future<void> _checkOutdatedPackages() async {
     logger.step('Checking for outdated packages...');
 
-    final result = await ProcessUtils.runFlutterCommand(['pub', 'outdated'], logger: logger);
+    final result = await ProcessUtils.runFlutterCommand(['pub', 'outdated'],
+        logger: logger);
 
     if (result.exitCode == 0) {
       logger.success('Package check completed');

@@ -11,14 +11,16 @@ class FileUtils {
   }
 
   /// Get all files in directory recursively
-  static List<File> getAllFiles(String directoryPath, {List<String>? extensions}) {
+  static List<File> getAllFiles(String directoryPath,
+      {List<String>? extensions}) {
     final dir = Directory(directoryPath);
     if (!dir.existsSync()) return [];
 
     final files = <File>[];
     for (final entity in dir.listSync(recursive: true)) {
       if (entity is File) {
-        if (extensions == null || extensions.contains(path.extension(entity.path))) {
+        if (extensions == null ||
+            extensions.contains(path.extension(entity.path))) {
           files.add(entity);
         }
       }

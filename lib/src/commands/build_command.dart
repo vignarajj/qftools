@@ -52,7 +52,8 @@ class BuildCommand {
     if (File(apkPath).existsSync()) {
       logger.info('APK location: $apkPath');
     } else {
-      logger.info('APK built successfully, check build/app/outputs/flutter-apk/ directory');
+      logger.info(
+          'APK built successfully, check build/app/outputs/flutter-apk/ directory');
     }
   }
 }

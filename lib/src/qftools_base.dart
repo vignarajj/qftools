@@ -61,7 +61,8 @@ class QfTools {
   /// Verify command can run in current directory
   void _verifyFlutterProject() {
     if (!_isFlutterProject()) {
-      logger.error('Not a Flutter project directory. Please run this command from a Flutter project root.');
+      logger.error(
+          'Not a Flutter project directory. Please run this command from a Flutter project root.');
       exit(1);
     }
   }

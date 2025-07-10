@@ -79,7 +79,8 @@
   } else if (clean) {
     await _cleanUnusedAssets();
   } else {
-    logger.info(&#39;Use --check to find unused assets or --clean to remove them&#39;);
+    logger
+        .info(&#39;Use --check to find unused assets or --clean to remove them&#39;);
     logger.info(&#39;Example: qf_tools assets-cleaner --check&#39;);
   }
 }</code></pre>

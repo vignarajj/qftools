@@ -26,7 +26,8 @@ class AssetsCommand {
 
     final assetFiles = FileUtils.getAssetFileObjects();
     if (assetFiles.isEmpty) {
-      logger.warning('No asset files found in common directories (assets, lib/assets, images, fonts)');
+      logger.warning(
+          'No asset files found in common directories (assets, lib/assets, images, fonts)');
       return;
     }
 
@@ -34,7 +35,8 @@ class AssetsCommand {
     final outputPath = 'lib/assets/app_assets.dart';
 
     FileUtils.writeFile(outputPath, assetsContent);
-    logger.success('Generated ${assetFiles.length} asset constants in $outputPath');
+    logger.success(
+        'Generated ${assetFiles.length} asset constants in $outputPath');
   }
 
   Future<void> _watchAssets() async {
@@ -112,7 +114,8 @@ class AssetsCommand {
         final assetPath = FileUtils.filePathToAssetPath(file.path);
 
         if (constantName.isNotEmpty) {
-          buffer.writeln('  static const String $constantName = \'$assetPath\';');
+          buffer
+              .writeln('  static const String $constantName = \'$assetPath\';');
         }
       }
 
