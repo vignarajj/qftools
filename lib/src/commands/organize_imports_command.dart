@@ -31,7 +31,7 @@ class OrganizeImportsCommand {
       }
     }
 
-    if (targetFile == null || targetFile.isEmpty) {
+    if (targetFile.isEmpty) {
       logger.error('Please specify a Dart file to organize imports');
       logger
           .info('Usage: qftools organize-imports <path/file.dart> [--barrel]');

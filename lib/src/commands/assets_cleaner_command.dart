@@ -1,8 +1,10 @@
 import 'dart:io';
+
 import 'package:args/args.dart';
 import 'package:path/path.dart' as path;
-import '../utils/logger.dart';
+
 import '../utils/file_utils.dart';
+import '../utils/logger.dart';
 
 /// Command to manage and clean unused assets in Flutter projects
 class AssetsCleanerCommand {
@@ -217,8 +219,9 @@ class AssetsCleanerCommand {
   String _formatBytes(int bytes) {
     if (bytes < 1024) return '$bytes B';
     if (bytes < 1024 * 1024) return '${(bytes / 1024).toStringAsFixed(1)} KB';
-    if (bytes < 1024 * 1024 * 1024)
+    if (bytes < 1024 * 1024 * 1024) {
       return '${(bytes / (1024 * 1024)).toStringAsFixed(1)} MB';
+    }
     return '${(bytes / (1024 * 1024 * 1024)).toStringAsFixed(1)} GB';
   }
 }
