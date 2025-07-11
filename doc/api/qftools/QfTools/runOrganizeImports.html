@@ -71,7 +71,8 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; runOrganizeImports(ArgResults results) async {
-  _verifyFlutterProject();
+  &#47;&#47; Skip Flutter project verification for organize-imports command
+  &#47;&#47; This allows it to work in any directory with Dart files
   await organizeImportsCommand.execute(results);
 }</code></pre>
 </section>
@@ -101,7 +102,7 @@
 <footer>
   <span class="no-break">
     qftools
-      1.0.3
+      1.0.4
   </span>
   
 </footer>

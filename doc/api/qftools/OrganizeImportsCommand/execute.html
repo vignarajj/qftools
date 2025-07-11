@@ -73,12 +73,22 @@
   <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; execute(ArgResults results) async {
   final useBarrelFiles = results[&#39;barrel&#39;] as bool;
   String? targetFile;
+  String? targetDirectory;
 
-  &#47;&#47; Check if file argument is provided
+  &#47;&#47; Check if file or directory argument is provided
   if (results.rest.isNotEmpty) {
-    targetFile = results.rest.first;
+    final path = results.rest.first;
+    final pathEntity = FileSystemEntity.typeSync(path);
+
+    if (pathEntity == FileSystemEntityType.directory) {
+      targetDirectory = path;
+      &#47;&#47; Interactive mode with specified directory
+      targetFile = await _selectFileInteractively(directory: targetDirectory);
+    } else {
+      targetFile = path;
+    }
   } else {
-    &#47;&#47; Interactive mode: list all .dart files in lib&#47; directory
+    &#47;&#47; Interactive mode with current directory
     targetFile = await _selectFileInteractively();
     if (targetFile == null) {
       return;
@@ -94,8 +104,8 @@
 
   if (targetFile == null || targetFile.isEmpty) {
     logger.error(&#39;Please specify a Dart file to organize imports&#39;);
-    logger
-        .info(&#39;Usage: qftools organize-imports &lt;path&#47;file.dart&gt; [--barrel]&#39;);
+    logger.info(
+        &#39;Usage: qftools organize-imports &lt;path&#47;file.dart|directory&gt; [--barrel]&#39;);
     return;
   }
 
@@ -128,7 +138,7 @@
 <footer>
   <span class="no-break">
     qftools
-      1.0.3
+      1.0.4
   </span>
   
 </footer>
