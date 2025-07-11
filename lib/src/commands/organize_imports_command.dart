@@ -12,12 +12,22 @@ class OrganizeImportsCommand {
   Future<void> execute(ArgResults results) async {
     final useBarrelFiles = results['barrel'] as bool;
     String? targetFile;
+    String? targetDirectory;
 
-    // Check if file argument is provided
+    // Check if file or directory argument is provided
     if (results.rest.isNotEmpty) {
-      targetFile = results.rest.first;
+      final path = results.rest.first;
+      final pathEntity = FileSystemEntity.typeSync(path);
+
+      if (pathEntity == FileSystemEntityType.directory) {
+        targetDirectory = path;
+        // Interactive mode with specified directory
+        targetFile = await _selectFileInteractively(directory: targetDirectory);
+      } else {
+        targetFile = path;
+      }
     } else {
-      // Interactive mode: list all .dart files in lib/ directory
+      // Interactive mode with current directory
       targetFile = await _selectFileInteractively();
       if (targetFile == null) {
         return;
@@ -31,38 +41,46 @@ class OrganizeImportsCommand {
       }
     }
 
-    if (targetFile.isEmpty) {
+    if (targetFile == null || targetFile.isEmpty) {
       logger.error('Please specify a Dart file to organize imports');
-      logger
-          .info('Usage: qftools organize-imports <path/file.dart> [--barrel]');
+      logger.info(
+          'Usage: qftools organize-imports <path/file.dart|directory> [--barrel]');
       return;
     }
 
     await _organizeImports(targetFile, useBarrelFiles: useBarrelFiles);
   }
 
-  /// Interactive file selection from lib/ directory
-  Future<String?> _selectFileInteractively() async {
-    logger.info('Searching for .dart files in lib/ directory...');
+  /// Interactive file selection from the specified or current directory
+  Future<String?> _selectFileInteractively({String? directory}) async {
+    final directoryToSearch = directory ?? 'lib';
+    logger.info('Searching for .dart files in $directoryToSearch directory...');
 
-    final libDir = Directory('lib');
-    if (!libDir.existsSync()) {
-      logger.error(
-          'lib/ directory not found. Make sure you\'re in a Flutter project root.');
+    // First try the specified or lib directory
+    var searchDir = Directory(directoryToSearch);
+
+    // If specified directory doesn't exist or lib doesn't exist and no directory was specified,
+    // fallback to current directory
+    if (!searchDir.existsSync() && (directory == null || directory == 'lib')) {
+      searchDir = Directory('.');
+      logger.info(
+          'No lib/ directory found, searching in current directory instead...');
+    } else if (!searchDir.existsSync()) {
+      logger.error('Directory not found: $directoryToSearch');
       return null;
     }
 
-    // Find all .dart files in lib/ directory and subdirectories
+    // Find all .dart files in the directory and subdirectories
     final dartFiles = <String>[];
     await for (final entity
-        in libDir.list(recursive: true, followLinks: false)) {
+        in searchDir.list(recursive: true, followLinks: false)) {
       if (entity is File && entity.path.endsWith('.dart')) {
         dartFiles.add(entity.path);
       }
     }
 
     if (dartFiles.isEmpty) {
-      logger.error('No .dart files found in lib/ directory.');
+      logger.error('No .dart files found in ${searchDir.path} directory.');
       return null;
     }
 

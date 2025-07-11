@@ -18,27 +18,36 @@ void main() {
 
   // Example of file utilities
   print('\nFile Utilities Example:');
-  print('Asset path: ${FileUtils.filePathToAssetPath('assets/images/logo.png')}');
-  print('Constant name: ${FileUtils.filePathToConstantName('assets/images/app_logo.png')}');
+  print(
+      'Asset path: ${FileUtils.filePathToAssetPath('assets/images/logo.png')}');
+  print(
+      'Constant name: ${FileUtils.filePathToConstantName('assets/images/app_logo.png')}');
 
   // Example of checking Flutter project
   print('\nChecking if current directory is a Flutter project...');
   if (FileUtils.fileExists('pubspec.yaml')) {
-    logger.success('Found pubspec.yaml - this appears to be a Dart/Flutter project');
+    logger.success(
+        'Found pubspec.yaml - this appears to be a Dart/Flutter project');
   } else {
     logger.warning('No pubspec.yaml found - not a Dart/Flutter project');
   }
 
   // Example of new cleaner commands
   print('\nNew Cleaner Commands:');
-  print('• Assets Cleaner: Use "qf_tools assets-cleaner --check" to find unused assets');
-  print('• Assets Cleaner: Use "qf_tools assets-cleaner --clean" to remove unused assets');
-  print('• Package Cleaner: Use "qf_tools packages-cleaner --check" to find unused packages');
-  print('• Package Cleaner: Use "qf_tools packages-cleaner --clean" to remove unused packages');
+  print(
+      '• Assets Cleaner: Use "qf_tools assets-cleaner --check" to find unused assets');
+  print(
+      '• Assets Cleaner: Use "qf_tools assets-cleaner --clean" to remove unused assets');
+  print(
+      '• Package Cleaner: Use "qf_tools packages-cleaner --check" to find unused packages');
+  print(
+      '• Package Cleaner: Use "qf_tools packages-cleaner --clean" to remove unused packages');
 
-  print('\nThese commands help maintain a clean and optimized Flutter project by:');
+  print(
+      '\nThese commands help maintain a clean and optimized Flutter project by:');
   print('- Identifying unused assets that can be safely removed');
-  print('- Finding unused packages that add unnecessary weight to your project');
+  print(
+      '- Finding unused packages that add unnecessary weight to your project');
   print('- Providing interactive confirmation before removing files');
   print('- Showing storage space savings after cleanup');
 }

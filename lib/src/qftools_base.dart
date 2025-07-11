@@ -136,7 +136,8 @@ class QfTools {
 
   /// Execute organize imports command
   Future<void> runOrganizeImports(ArgResults results) async {
-    _verifyFlutterProject();
+    // Skip Flutter project verification for organize-imports command
+    // This allows it to work in any directory with Dart files
     await organizeImportsCommand.execute(results);
   }
 }

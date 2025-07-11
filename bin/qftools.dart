@@ -1,4 +1,5 @@
 #!/usr/bin/env dart
+
 import 'dart:io';
 import 'package:args/args.dart';
 import 'package:qftools/qftools.dart';
@@ -62,7 +63,8 @@ Future<void> main(List<String> arguments) async {
       print('\nGlobal options:');
       print('  -v, --verbose    Enable verbose logging');
       print('  -h, --help       Show this help message');
-      print('\nUse "qftools <command> --help" for more information about a command.');
+      print(
+          '\nUse "qftools <command> --help" for more information about a command.');
       return;
     }
 
@@ -133,12 +135,14 @@ Future<void> main(List<String> arguments) async {
 
 void _configureAssetsCommand(ArgParser parser) {
   parser.addFlag('help', abbr: 'h', help: 'Show help for this command');
-  parser.addFlag('watch', help: 'Watch for asset changes and regenerate automatically');
+  parser.addFlag('watch',
+      help: 'Watch for asset changes and regenerate automatically');
 }
 
 void _configureAssetsCleanerCommand(ArgParser parser) {
   parser.addFlag('help', abbr: 'h', help: 'Show help for this command');
-  parser.addFlag('check', help: 'Check for unused assets without removing them');
+  parser.addFlag('check',
+      help: 'Check for unused assets without removing them');
   parser.addFlag('clean', help: 'Remove unused assets from the project');
 }
 
@@ -186,7 +190,8 @@ void _configurePackagesCommand(ArgParser parser) {
 
 void _configurePackagesCleanerCommand(ArgParser parser) {
   parser.addFlag('help', abbr: 'h', help: 'Show help for this command');
-  parser.addFlag('check', help: 'Check for unused packages without removing them');
+  parser.addFlag('check',
+      help: 'Check for unused packages without removing them');
   parser.addFlag('clean', help: 'Remove unused packages from the project');
 }
 
@@ -201,5 +206,6 @@ void _configureBarrelCommand(ArgParser parser) {
 
 void _configureOrganizeImportsCommand(ArgParser parser) {
   parser.addFlag('help', abbr: 'h', help: 'Show help for this command');
-  parser.addFlag('barrel', help: 'Use barrel files for project imports optimization');
+  parser.addFlag('barrel',
+      help: 'Use barrel files for project imports optimization');
 }

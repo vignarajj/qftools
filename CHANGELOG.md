@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.4]
+
+### Enhanced
+- **Universal Directory Support for Organize Imports**: Improved `organize-imports` command to work in any directory
+  - Now works in any folder containing Dart files, not just Flutter project root
+  - Automatically detects current directory when run from non-Flutter projects
+  - Falls back to current directory when lib/ is not available
+  - Can run from subdirectories like lib/src/utils
+  - Added support for specifying a target directory to search within
+
+### Improved
+- Removed Flutter project directory validation for organize-imports command
+- Enhanced file discovery to work with any directory structure
+- Better error handling for non-Flutter projects
+- More flexible command usage scenarios for different project types
+
 ## [1.0.3]
 
 ### Enhanced
